@@ -1,4 +1,4 @@
 <?
 $MESS ['GOT_NAME'] = "Google One Tap";
-$MESS ['GOT_DESC'] = "Àâòîðèçàöèÿ ñ ïîìîùüþ Google One Tap";
+$MESS ['GOT_DESC'] = "ÐÐ²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Google One Tap";
 ?>
