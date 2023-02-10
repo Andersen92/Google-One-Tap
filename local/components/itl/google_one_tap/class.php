@@ -112,23 +112,34 @@ class GoogleOneTapComponent extends \CBitrixComponent implements  Controllerable
 
         $this->arResult = $this->prepareData();
 
-        if(!$USER->isAuthorized()) {
-            if (isset($_POST['credential'])) {
-                $idToken = $_POST["credential"];
-                if (empty($idToken)) {
-                    ShowError(Loc::getMessage('GOT_EMPTY_TOKEN'));
-                    return false;
-                }
-
-                $result = $this->authorize($idToken);
-                if($result) {
-                    LocalRedirect($APPLICATION->GetCurPage());
-                } else if ($this->errorCollection->getValues()) {
-                    $this->showErrors();
-                }
-            }
+        if($USER->isAuthorized()) {
+            return false;
         }
 
+        if (!isset($_REQUEST['needCheckCredential']) && !isset($_POST['credential'])) {
+            $this->includeComponentTemplate();
+            return false;
+        }
+
+        if (!empty(isset($_REQUEST['needCheckCredential'])) && empty(isset($_POST['credential']))) {
+            ShowError(Loc::getMessage('GOT_EMPTY_CREDENTIAL'));
+            return false;
+        }
+
+        $idToken = $_POST["credential"];
+        if (empty($idToken)) {
+            ShowError(Loc::getMessage('GOT_EMPTY_TOKEN'));
+            return false;
+        }
+
+        $result = $this->authorize($idToken);
+        if ($result) {
+            LocalRedirect($APPLICATION->GetCurPage());
+            return true;
+        }
+
+        $this->errorCollection->getValues();
+        $this->showErrors();
         $this->includeComponentTemplate();
     }
 
@@ -140,7 +151,7 @@ class GoogleOneTapComponent extends \CBitrixComponent implements  Controllerable
 
         $arResult['GOOGLE_CLIENT_ID'] = Option::get("socialservices", "google_appid");
         $arResult['GOOGLE_CLIENT_SECRET'] = Option::get("socialservices", "google_appsecret");
-        $arResult['LOGIN_URI'] = \CHTTP::URN2URI($APPLICATION->GetCurPage(false));
+        $arResult['LOGIN_URI'] = \CHTTP::URN2URI($APPLICATION->GetCurPage(false)) . "?needCheckCredential=1";
         $arResult['STATE'] = 'provider=' . \CSocServGoogleOAuth::ID . '&site_id=' . SITE_ID . '&backurl=' . urlencode($GLOBALS["APPLICATION"]->GetCurPageParam('', array("logout", "auth_service_error", "auth_service_id", "backurl"))) . '&mode=popup' . '&check_key=' . \CSocServAuthManager::getUniqueKey() . '&response_type=code&redirect_url=' . urlencode(\CHTTP::URN2URI($APPLICATION->GetCurPage(false)));
 
         return $arResult;

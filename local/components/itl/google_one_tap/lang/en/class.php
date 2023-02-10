@@ -1,6 +1,7 @@
 <?php
 $MESS["GOT_MODULE_NOT_INSTALL"] = "Error: Social services module not installed!";
 $MESS["GOT_ALREADY_LOGGED_IN"] = "Error: The user is already logged in!";
+$MESS["GOT_EMPTY_CREDENTIAL"] = "Error: Empty Google account credentials!";
 $MESS["GOT_MISSING_TOKEN"] = "Error: Missing JWT token!";
 $MESS["GOT_EMPTY_TOKEN"] = "Error: Empty JWT token!";
 $MESS["GOT_MISSING_PUBLIC_KEYS"] = "Error: Missing public keys!";

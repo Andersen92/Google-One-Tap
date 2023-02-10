@@ -1,6 +1,7 @@
 <?php
 $MESS["GOT_MODULE_NOT_INSTALL"] = "Ошибка: не установлен модуль Социальные сервисы!";
 $MESS["GOT_ALREADY_LOGGED_IN"] = "Ошибка: пользователь уже авторизован!";
+$MESS["GOT_EMPTY_CREDENTIAL"] = "Ошибка: нет учетных данных Google аккаунта!";
 $MESS["GOT_MISSING_TOKEN"] = "Ошибка: отсутствует JWT-токен!";
 $MESS["GOT_EMPTY_TOKEN"] = "Ошибка: пустой JWT-токен!";
 $MESS["GOT_MISSING_PUBLIC_KEYS"] = "Ошибка: отсутствуют публичные ключи!";
