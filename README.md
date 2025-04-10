@@ -3,10 +3,10 @@
 
 Данный компонент позволяет авторизовываться на сайте с CMS Битрикс с помощью Google One Tap с последующим созданием пользователя на сайте
 
-1 Создание приложения в Google:
-1.1. Перейдите по ссылке https://console.developers.google.com/
-1.2. Нажмите на (Credentials) в левом сайдбаре. На странице жмём Create Credentials и выбираем OAuth client ID. 
-1.3 Заполняем информацию в полях:
+1 Создание приложения в Google: <br>
+1.1. Перейдите по ссылке https://console.developers.google.com/ <br>
+1.2. Нажмите на (Credentials) в левом сайдбаре. На странице жмём Create Credentials и выбираем OAuth client ID.  <br>
+1.3 Заполняем информацию в полях: <br>
 
 Application type: Web application
 Name: Произвольное название (например Google One Tap)
@@ -19,7 +19,7 @@ URLs: Ссылка с настроек модуля (http://bitrix.ru/bitrix/too
 
 Жмём CREATE
 
-1.4. Скопировать Client ID и вставить в настройках модуля Социальные сервисы в секции Настройки Google в поле Идентификатор (Client ID): 
+1.4. Скопировать Client ID и вставить в настройках модуля Социальные сервисы в секции Настройки Google в поле Идентификатор (Client ID) 
 
 2. Подключение компонента:
 <code>
