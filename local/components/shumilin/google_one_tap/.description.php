@@ -2,8 +2,8 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
 $arComponentDescription = array(
-    "NAME" => "Google One Tap",
-    "DESCRIPTION" => "Авторизация с помощью Google One Tap",
+    "NAME" => GetMessage("GOT_NAME"),
+    "DESCRIPTION" => GetMessage("GOT_DESC"),
     "ICON" => "",
     "PATH" => array(
         "ID" => "",

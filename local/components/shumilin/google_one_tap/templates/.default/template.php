@@ -45,22 +45,21 @@
                 console.log(googleUser);
                 // send google credentials in the AJAX request
                 var idToken = googleUser.credential;
-                BX.ajax({
-                    method: 'POST',
-                    dataType: 'json',
-                    url: "<?=CUtil::JSEscape($component->getPath().'/ajax.php')?>",
+                BX.ajax.runComponentAction('shumilin:google_one_tap', 'authorize', {
+                    mode: 'class',
                     data: {
-                        token: idToken
+                        idToken: idToken
                     },
-                    onsuccess: BX.delegate(function(result) {
-                        console.log('success result = ', result);
+                }).then(function (response) {
+                    console.log(response);
+                    if(response.status == 'success') {
                         location.reload();
-                    }),
-                    onfailure: BX.delegate(function(result){
-                        console.log('onfailure result = ', result);
-                    })
+                    }
+                }, function (response) {
+                    console.log(response);
                 });
             }
+
         <?php endif;?>
 
         function continueWithNextIdp(notification) {
@@ -72,6 +71,5 @@
                 console.log('DismissedReason = ', notification.getDismissedReason());
             }
         }
-
     </script>
 <?php endif;?>
